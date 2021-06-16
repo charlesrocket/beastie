@@ -3,7 +3,8 @@
 
 #include <Watchy.h>
 #include "daemon.h"
-#include "conso15pt7b.h"
+#include "conso17pt7b.h"
+#include "conso12pt7b.h"
 
 class WatchyFBSD : public Watchy{
     public:
