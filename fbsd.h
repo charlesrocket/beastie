@@ -5,11 +5,13 @@
 #include "daemon.h"
 #include "conso17pt7b.h"
 #include "conso12pt7b.h"
+#include "conso10pt7b.h"
 
 class WatchyFBSD : public Watchy{
     public:
         WatchyFBSD();
         void drawWatchFace();
+        void drawWDay();
         void drawDate();
         void drawTime();
         void drawSteps();
