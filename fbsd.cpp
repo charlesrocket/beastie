@@ -6,9 +6,21 @@ void WatchyFBSD::drawWatchFace(){
     display.fillScreen(GxEPD_BLACK);
     display.setTextColor(GxEPD_WHITE);
     display.drawBitmap(0, 0, daemon, 200, 200, GxEPD_WHITE);
+    drawDate();
     drawTime();
     drawSteps();
     drawBattery();
+}
+
+void WatchyFBSD::drawDate(){
+    display.setFont(&conso12pt7b);
+    display.setCursor(126, 79);
+    if(currentTime.Day < 10){
+    display.print("0");
+    }
+    display.print(currentTime.Day);
+    display.print("/");
+    display.print(currentTime.Month);
 }
 
 void WatchyFBSD::drawTime(){
