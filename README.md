@@ -1,4 +1,4 @@
 # watchy_fbsd
-![img](img.png)
+![watchy](img.png)
 
 Daemon face for Watchy
