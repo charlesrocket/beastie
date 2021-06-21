@@ -53,6 +53,9 @@ void WatchyFBSD::drawSteps(){
     for(int i=1; i<5; i++){
         stepStr = stepCount < pow(10, i) ? "0" + stepStr : stepStr;
     }
+    if(currentTime.Hour == 23 && currentTime.Minute == 59){
+        sensor.resetStepCounter();
+    }
     display.print(stepStr);
 }
 
