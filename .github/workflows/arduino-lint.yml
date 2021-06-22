@@ -1,4 +1,10 @@
-on: [push, pull_request]
+name: Arduino Lint
+
+on:
+  pull_request:
+  push:
+  schedule:
+    - cron: "0 11 13 */2 *"
 
 jobs:
   lint:
