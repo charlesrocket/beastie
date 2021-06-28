@@ -63,12 +63,12 @@ void WatchyFBSD::drawSteps(){
 }
 
 void WatchyFBSD::drawBattery(){
-    display.setFont(&conso12pt7b);
-    display.setCursor(132, 152);
+    display.setFont(&conso11pt7b);
+    display.setCursor(131, 151);
     int8_t batt = getBattery();
     String battStr = String(batt);
     battStr = batt < 10 ? "0" + battStr : battStr;
- // battStr = batt < 100 ? "0" + battStr : battStr;
+    battStr = batt < 100 ? "0" + battStr : battStr;
     display.print(battStr);
 }
 
