@@ -68,7 +68,7 @@ void WatchyFBSD::drawBattery(){
     int8_t batt = getBattery();
     String battStr = String(batt);
     battStr = batt < 10 ? "0" + battStr : battStr;
-    battStr = batt < 100 ? "0" + battStr : battStr;
+ // battStr = batt < 100 ? "0" + battStr : battStr;
     display.print(battStr);
     display.display(true);
 }
