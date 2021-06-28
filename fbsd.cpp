@@ -12,7 +12,6 @@ void WatchyFBSD::drawWatchFace(){
     drawSteps();
     drawBattery();
     for(uint8_t i=0; i<3; i++){
-        display.drawBitmap(0, 0, daemon, 200, 200, GxEPD_WHITE);
         display.display(true);
       }
 }
@@ -66,6 +65,7 @@ void WatchyFBSD::drawSteps(){
 void WatchyFBSD::drawBattery(){
     display.setFont(&conso12pt7b);
     display.setCursor(132, 152);
+    display.display(true);
     float voltage = getBatteryVoltage();
     uint8_t percentage = 2808.3808 * pow(voltage, 4)
                       - 43560.9157 * pow(voltage, 3)
