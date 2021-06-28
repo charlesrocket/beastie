@@ -4,6 +4,7 @@
 #include <Watchy.h>
 #include "fonts/conso17pt7b.h"
 #include "fonts/conso12pt7b.h"
+#include "fonts/conso11pt7b.h"
 #include "fonts/conso10pt7b.h"
 #include "daemon.h"
 
