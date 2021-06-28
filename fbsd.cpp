@@ -11,6 +11,10 @@ void WatchyFBSD::drawWatchFace(){
     drawTime();
     drawSteps();
     drawBattery();
+    for(uint8_t i=0; i<3; i++){
+        display.drawBitmap(0, 0, daemon, 200, 200, GxEPD_WHITE);
+        display.display(true);
+      }
 }
 
 void WatchyFBSD::drawWDay(){
