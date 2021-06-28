@@ -16,6 +16,7 @@ class WatchyFBSD : public Watchy{
         void drawTime();
         void drawSteps();
         void drawBattery();
+        uint8_t getBattery();
 };
 
 #endif
