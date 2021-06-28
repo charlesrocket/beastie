@@ -18,14 +18,14 @@ void WatchyFBSD::drawWatchFace(){
 
 void WatchyFBSD::drawWDay(){
     display.setFont(&conso10pt7b);
-    display.setCursor(139, 58);
+    display.setCursor(139, 59);
     String dayOfWeek = dayShortStr(currentTime.Wday);
     display.print(dayOfWeek);
 }
 
 void WatchyFBSD::drawDate(){
     display.setFont(&conso12pt7b);
-    display.setCursor(126, 79);
+    display.setCursor(126, 80);
     if(currentTime.Day < 10){
     display.print("0");
     }
@@ -36,7 +36,7 @@ void WatchyFBSD::drawDate(){
 
 void WatchyFBSD::drawTime(){
     display.setFont(&conso17pt7b);
-    display.setCursor(110, 107);
+    display.setCursor(110, 108);
     if(currentTime.Hour < 10){
         display.print("0");
     }
