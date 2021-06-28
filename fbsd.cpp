@@ -70,7 +70,6 @@ void WatchyFBSD::drawBattery(){
     battStr = batt < 10 ? "0" + battStr : battStr;
  // battStr = batt < 100 ? "0" + battStr : battStr;
     display.print(battStr);
-    display.display(true);
 }
 
 uint8_t WatchyFBSD::getBattery(){
