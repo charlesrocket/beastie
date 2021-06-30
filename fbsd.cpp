@@ -63,23 +63,19 @@ void WatchyFBSD::drawSteps(){
 }
 
 void WatchyFBSD::drawBattery(){
+    display.setFont(&conso10pt7b);
+    display.setCursor(188, 17);
+    display.print(">");
     display.setFont(&conso11pt7b);
-    display.setCursor(131, 151);
-    int8_t batt = getBattery();
-    String battStr = String(batt);
-    battStr = batt < 10 ? "0" + battStr : battStr;
-    battStr = batt < 100 ? "0" + battStr : battStr;
-    display.print(battStr);
-}
-
-uint8_t WatchyFBSD::getBattery(){
-    float voltage = getBatteryVoltage();
-    uint8_t percentage = 2808.3808 * pow(voltage, 4)
-                        - 43560.9157 * pow(voltage, 3)
-                        + 252848.5888 * pow(voltage, 2)
-                        - 650767.4615 * voltage
-                        + 626532.5703;
-    percentage = min((uint8_t) 100, percentage);
-    percentage = max((uint8_t) 0, percentage);
-    return percentage;
+    display.setCursor(156, 15);
+    float BATTV = getBatteryVoltage();
+    if(BATTV > 4.1){
+        display.print("***");
+    }
+    else if(BATTV > 3.75 && BATTV <= 4.1){
+        display.print(" **");
+    }
+    else if(BATTV > 3.50 && BATTV <= 3.75){
+        display.print("  *");
+    }
 }
