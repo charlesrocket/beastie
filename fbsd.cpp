@@ -19,14 +19,14 @@ void WatchyFBSD::drawWatchFace(){
 
 void WatchyFBSD::drawWDay(){
     display.setFont(&conso10pt7b);
-    display.setCursor(136, 68);
+    display.setCursor(137, 68);
     String dayOfWeek = dayShortStr(currentTime.Wday);
     display.print(dayOfWeek);
 }
 
 void WatchyFBSD::drawDate(){
     display.setFont(&conso12pt7b);
-    display.setCursor(121, 90);
+    display.setCursor(122, 90);
     if(currentTime.Day < 10){
     display.print("0");
     }
@@ -54,7 +54,7 @@ void WatchyFBSD::drawTime(){
 
 void WatchyFBSD::drawSteps(){
     display.setFont(&conso12pt7b);
-    display.setCursor(122, 141);
+    display.setCursor(123, 141);
     uint32_t stepCount = sensor.getCounter();
     String stepStr = String(stepCount);
     for(int i=1; i<5; i++){
@@ -68,7 +68,7 @@ void WatchyFBSD::drawSteps(){
 
 void WatchyFBSD::drawX(){
     display.setFont(&conso11pt7b);
-    display.setCursor(147, 157);
+    display.setCursor(148, 157);
     display.print("x");
 }
 
