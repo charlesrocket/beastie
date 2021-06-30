@@ -11,6 +11,7 @@ void WatchyFBSD::drawWatchFace(){
     drawTime();
     drawSteps();
     drawBattery();
+    drawX();
     for(uint8_t i=0; i<3; i++){
         display.display(true);
       }
@@ -63,6 +64,12 @@ void WatchyFBSD::drawSteps(){
         sensor.resetStepCounter();
     }
     display.print(stepStr);
+}
+
+void WatchyFBSD::drawX(){
+    display.setFont(&conso11pt7b);
+    display.setCursor(147, 159);
+    display.print("x");
 }
 
 void WatchyFBSD::drawBattery(){
