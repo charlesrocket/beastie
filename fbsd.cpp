@@ -19,7 +19,7 @@ void WatchyFBSD::drawWatchFace(){
 
 void WatchyFBSD::drawWDay(){
     display.setFont(&conso10pt7b);
-    display.setCursor(138, 69);
+    display.setCursor(137, 69);
     String dayOfWeek = dayShortStr(currentTime.Wday);
     display.print(dayOfWeek);
 }
