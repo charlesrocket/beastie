@@ -14,7 +14,7 @@ void WatchyFBSD::drawWatchFace(){
     drawX();
     for(uint8_t i=0; i<3; i++){
         display.display(true);
-      }
+    }
 }
 
 void WatchyFBSD::drawWDay(){
