@@ -82,10 +82,10 @@ void WatchyFBSD::drawBattery(){
     if(BATTV > 4.1){
         display.print("***");
     }
-    else if(BATTV > 3.75 && BATTV <= 4.1){
+    else if(BATTV > 3.95 && BATTV <= 4.1){
         display.print(" **");
     }
-    else if(BATTV > 3.50 && BATTV <= 3.75){
+    else if(BATTV > 3.80 && BATTV <= 3.95){
         display.print("  *");
     }
 }
