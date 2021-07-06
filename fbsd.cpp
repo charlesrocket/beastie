@@ -10,7 +10,7 @@ void WatchyFBSD::drawWatchFace(){
     drawDate();
     drawTime();
     drawSteps();
-    drawTemperature();
+  //drawTemperature();
     drawBattery();
     drawX();
     for(uint8_t i=0; i<3; i++){
