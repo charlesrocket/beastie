@@ -66,12 +66,6 @@ void WatchyFBSD::drawSteps(){
     display.print(stepStr);
 }
 
-void WatchyFBSD::drawX(){
-    display.setFont(&conso11pt7b);
-    display.setCursor(148, 158);
-    display.print("x");
-}
-
 void WatchyFBSD::drawBattery(){
     display.setFont(&conso10pt7b);
     display.setCursor(188, 17);
@@ -88,4 +82,10 @@ void WatchyFBSD::drawBattery(){
     else if(BATTV > 3.80 && BATTV <= 3.95){
         display.print("  *");
     }
+}
+
+void WatchyFBSD::drawX(){
+    display.setFont(&conso11pt7b);
+    display.setCursor(148, 158);
+    display.print("x");
 }
