@@ -16,6 +16,7 @@ class WatchyFBSD : public Watchy{
         void drawDate();
         void drawTime();
         void drawSteps();
+        void drawTemperature();
         void drawBattery();
         void drawX();
 };

@@ -10,6 +10,7 @@ void WatchyFBSD::drawWatchFace(){
     drawDate();
     drawTime();
     drawSteps();
+  //drawTemperature();
     drawBattery();
     drawX();
     for(uint8_t i=0; i<3; i++){
@@ -66,10 +67,18 @@ void WatchyFBSD::drawSteps(){
     display.print(stepStr);
 }
 
-void WatchyFBSD::drawX(){
-    display.setFont(&conso11pt7b);
-    display.setCursor(148, 158);
-    display.print("x");
+void WatchyFBSD::drawTemperature(){
+    display.setFont(&conso10pt7b);
+    display.setCursor(4, 18);
+    uint8_t temperatureRTC = RTC.temperature() / 4;
+    if(temperatureRTC < 10){
+    display.print("0");
+    }
+    display.print(temperatureRTC);
+    display.setCursor(22, 11);
+    display.print(".");
+    display.setCursor(29, 16);
+    display.print("c");
 }
 
 void WatchyFBSD::drawBattery(){
@@ -88,4 +97,10 @@ void WatchyFBSD::drawBattery(){
     else if(BATTV > 3.80 && BATTV <= 3.95){
         display.print("  *");
     }
+}
+
+void WatchyFBSD::drawX(){
+    display.setFont(&conso11pt7b);
+    display.setCursor(148, 158);
+    display.print("x");
 }
