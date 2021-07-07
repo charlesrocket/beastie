@@ -13,7 +13,7 @@ void WatchyFBSD::drawWatchFace(){
   //drawTemperature();
     drawBattery();
     drawX();
-    for(uint8_t i=0; i<3; i++){
+    for(uint8_t i=0; i<2; i++){
         display.display(true);
     }
 }
