@@ -20,42 +20,46 @@ void WatchyFBSD::drawWatchFace(){
 
 void WatchyFBSD::drawWDay(){
     display.setFont(&conso10pt7b);
-    display.setCursor(137, 69);
+    int16_t  x1, y1;
+    uint16_t w, h;
     String dayOfWeek = dayShortStr(currentTime.Wday);
-    display.print(dayOfWeek);
+    display.getTextBounds(String(dayOfWeek), 0, 0, &x1, &y1, &w, &h);
+    display.setCursor(150 - w/2, 69);
+    display.println(String(dayOfWeek));
 }
 
 void WatchyFBSD::drawDate(){
     display.setFont(&conso12pt7b);
-    display.setCursor(123, 91);
-    if(currentTime.Day < 10){
-    display.print("0");
-    }
-    display.print(currentTime.Day);
-    display.print("/");
-    if(currentTime.Month < 10){
-    display.print("0");
-    }
-    display.print(currentTime.Month);
+    int16_t  x1, y1;
+    uint16_t w, h;
+    String monthStr = String(currentTime.Month);
+    String dayStr = String(currentTime.Day);
+    monthStr = currentTime.Day < 10 ? "0" + monthStr : monthStr;
+    dayStr = currentTime.Day < 10 ? "0" + dayStr : dayStr;
+    String dateStr = dayStr + "/" + monthStr;
+    display.getTextBounds(String(dateStr), 0, 0, &x1, &y1, &w, &h);
+    display.setCursor(150 - w/2, 91);
+    display.println(String(dateStr));
 }
 
 void WatchyFBSD::drawTime(){
     display.setFont(&conso17pt7b);
-    display.setCursor(110, 119);
-    if(currentTime.Hour < 10){
-        display.print("0");
-    }
-    display.print(currentTime.Hour);
-    display.print(":");
-    if(currentTime.Minute < 10){
-        display.print("0");
-    }
-    display.println(currentTime.Minute);
+    int16_t  x1, y1;
+    uint16_t w, h;
+    String hourStr = String(currentTime.Hour);
+    String minStr = String(currentTime.Minute);
+    hourStr = currentTime.Hour < 10 ? "0" + hourStr : hourStr;
+    minStr = currentTime.Minute < 10 ? "0" + minStr : minStr;
+    String timeStr = hourStr + ":" + minStr;
+    display.getTextBounds(String(timeStr), 0, 0, &x1, &y1, &w, &h);
+    display.setCursor(150 - w/2, 119);
+    display.println(String(timeStr));
 }
 
 void WatchyFBSD::drawSteps(){
     display.setFont(&conso12pt7b);
-    display.setCursor(123, 142);
+    int16_t  x1, y1;
+    uint16_t w, h;
     uint32_t stepCount = sensor.getCounter();
     String stepStr = String(stepCount);
     for(int i=1; i<5; i++){
@@ -64,7 +68,9 @@ void WatchyFBSD::drawSteps(){
     if(currentTime.Hour == 23 && currentTime.Minute == 59){
         sensor.resetStepCounter();
     }
-    display.print(stepStr);
+    display.getTextBounds(String(stepStr), 0, 0, &x1, &y1, &w, &h);
+    display.setCursor(150 - w/2, 142);
+    display.println(String(stepStr));
 }
 
 void WatchyFBSD::drawTemperature(){
