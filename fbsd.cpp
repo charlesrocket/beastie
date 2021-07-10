@@ -44,16 +44,16 @@ void WatchyFBSD::drawDate(){
 
 void WatchyFBSD::drawTime(){
     display.setFont(&conso17pt7b);
-    int16_t  x1, y1;
-    uint16_t w, h;
-    String hourStr = String(currentTime.Hour);
-    String minStr = String(currentTime.Minute);
-    hourStr = currentTime.Hour < 10 ? "0" + hourStr : hourStr;
-    minStr = currentTime.Minute < 10 ? "0" + minStr : minStr;
-    String timeStr = hourStr + ":" + minStr;
-    display.getTextBounds(String(timeStr), 0, 0, &x1, &y1, &w, &h);
-    display.setCursor(150 - w/2, 119);
-    display.println(String(timeStr));
+    display.setCursor(110, 119);
+    if(currentTime.Hour < 10){
+        display.print("0");
+    }
+    display.print(currentTime.Hour);
+    display.print(":");
+    if(currentTime.Minute < 10){
+        display.print("0");
+    }
+    display.print(currentTime.Minute);
 }
 
 void WatchyFBSD::drawSteps(){
