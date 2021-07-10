@@ -34,7 +34,7 @@ void WatchyFBSD::drawDate(){
     uint16_t w, h;
     String monthStr = String(currentTime.Month);
     String dayStr = String(currentTime.Day);
-    monthStr = currentTime.Day < 10 ? "0" + monthStr : monthStr;
+    monthStr = currentTime.Month < 10 ? "0" + monthStr : monthStr;
     dayStr = currentTime.Day < 10 ? "0" + dayStr : dayStr;
     String dateStr = dayStr + "/" + monthStr;
     display.getTextBounds(String(dateStr), 0, 0, &x1, &y1, &w, &h);
