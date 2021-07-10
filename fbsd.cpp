@@ -13,30 +13,33 @@ void WatchyFBSD::drawWatchFace(){
   //drawTemperature();
     drawBattery();
     drawX();
-    for(uint8_t i=0; i<2; i++){
+    for(uint8_t i=0; i<3; i++){
         display.display(true);
     }
 }
 
 void WatchyFBSD::drawWDay(){
     display.setFont(&conso10pt7b);
-    display.setCursor(137, 69);
+    int16_t  x1, y1;
+    uint16_t w, h;
     String dayOfWeek = dayShortStr(currentTime.Wday);
-    display.print(dayOfWeek);
+    display.getTextBounds(String(dayOfWeek), 0, 0, &x1, &y1, &w, &h);
+    display.setCursor(150 - w/2, 69);
+    display.println(String(dayOfWeek));
 }
 
 void WatchyFBSD::drawDate(){
     display.setFont(&conso12pt7b);
-    display.setCursor(123, 91);
-    if(currentTime.Day < 10){
-    display.print("0");
-    }
-    display.print(currentTime.Day);
-    display.print("/");
-    if(currentTime.Month < 10){
-    display.print("0");
-    }
-    display.print(currentTime.Month);
+    int16_t  x1, y1;
+    uint16_t w, h;
+    String monthStr = String(currentTime.Month);
+    String dayStr = String(currentTime.Day);
+    monthStr = currentTime.Day < 10 ? "0" + monthStr : monthStr;
+    dayStr = currentTime.Day < 10 ? "0" + dayStr : dayStr;
+    String dateStr = dayStr + "/" + monthStr;
+    display.getTextBounds(String(dateStr), 0, 0, &x1, &y1, &w, &h);
+    display.setCursor(150 - w/2, 91);
+    display.println(String(dateStr));
 }
 
 void WatchyFBSD::drawTime(){
@@ -50,12 +53,13 @@ void WatchyFBSD::drawTime(){
     if(currentTime.Minute < 10){
         display.print("0");
     }
-    display.println(currentTime.Minute);
+    display.print(currentTime.Minute);
 }
 
 void WatchyFBSD::drawSteps(){
-    display.setFont(&conso12pt7b);
-    display.setCursor(123, 142);
+    display.setFont(&conso11pt7b);
+    int16_t  x1, y1;
+    uint16_t w, h;
     uint32_t stepCount = sensor.getCounter();
     String stepStr = String(stepCount);
     for(int i=1; i<5; i++){
@@ -64,7 +68,9 @@ void WatchyFBSD::drawSteps(){
     if(currentTime.Hour == 23 && currentTime.Minute == 59){
         sensor.resetStepCounter();
     }
-    display.print(stepStr);
+    display.getTextBounds(String(stepStr), 0, 0, &x1, &y1, &w, &h);
+    display.setCursor(150 - w/2, 141);
+    display.println(String(stepStr));
 }
 
 void WatchyFBSD::drawTemperature(){
@@ -101,6 +107,6 @@ void WatchyFBSD::drawBattery(){
 
 void WatchyFBSD::drawX(){
     display.setFont(&conso11pt7b);
-    display.setCursor(148, 158);
+    display.setCursor(148, 157);
     display.print("x");
 }
