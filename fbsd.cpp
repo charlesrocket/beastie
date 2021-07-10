@@ -57,7 +57,7 @@ void WatchyFBSD::drawTime(){
 }
 
 void WatchyFBSD::drawSteps(){
-    display.setFont(&conso12pt7b);
+    display.setFont(&conso11pt7b);
     int16_t  x1, y1;
     uint16_t w, h;
     uint32_t stepCount = sensor.getCounter();
@@ -69,7 +69,7 @@ void WatchyFBSD::drawSteps(){
         sensor.resetStepCounter();
     }
     display.getTextBounds(String(stepStr), 0, 0, &x1, &y1, &w, &h);
-    display.setCursor(150 - w/2, 142);
+    display.setCursor(150 - w/2, 141);
     display.println(String(stepStr));
 }
 
@@ -107,6 +107,6 @@ void WatchyFBSD::drawBattery(){
 
 void WatchyFBSD::drawX(){
     display.setFont(&conso11pt7b);
-    display.setCursor(148, 158);
+    display.setCursor(148, 157);
     display.print("x");
 }
