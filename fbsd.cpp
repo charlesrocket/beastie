@@ -95,10 +95,10 @@ void WatchyFBSD::drawBattery(){
     display.setFont(&conso11pt7b);
     display.setCursor(156, 15);
     float BATTV = getBatteryVoltage();
-    if(BATTV > 4.1){
+    if(BATTV > 4.10){
         display.print("***");
     }
-    else if(BATTV > 3.85 && BATTV <= 4.1){
+    else if(BATTV > 3.85 && BATTV <= 4.10){
         display.print(" **");
     }
     else if(BATTV > 3.60 && BATTV <= 3.85){
