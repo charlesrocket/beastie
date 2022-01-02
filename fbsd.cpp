@@ -1,7 +1,5 @@
 #include "fbsd.h"
 
-WatchyFBSD::WatchyFBSD(){}
-
 void WatchyFBSD::drawWatchFace(){
     display.fillScreen(GxEPD_BLACK);
     display.setTextColor(GxEPD_WHITE);

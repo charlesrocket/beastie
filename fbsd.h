@@ -9,8 +9,8 @@
 #include "daemon.h"
 
 class WatchyFBSD : public Watchy{
+    using Watchy::Watchy;
     public:
-        WatchyFBSD();
         void drawWatchFace();
         void drawWDay();
         void drawDate();
