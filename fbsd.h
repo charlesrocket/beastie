@@ -9,16 +9,16 @@
 #include "daemon.h"
 
 class WatchyFBSD : public Watchy{
+    using Watchy::Watchy;
     public:
-        WatchyFBSD();
-        void drawWatchFace();
-        void drawWDay();
-        void drawDate();
-        void drawTime();
-        void drawSteps();
-        void drawTemperature();
-        void drawBattery();
-        void drawX();
+      void drawWatchFace();
+      void drawWDay();
+      void drawDate();
+      void drawTime();
+      void drawSteps();
+      void drawTemperature();
+      void drawBattery();
+      void drawX();
 };
 
 #endif
