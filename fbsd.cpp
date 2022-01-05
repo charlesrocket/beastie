@@ -3,7 +3,7 @@
 void WatchyFBSD::drawWatchFace(){
     display.fillScreen(GxEPD_BLACK);
     display.setTextColor(GxEPD_WHITE);
-    display.drawBitmap(0, 0, daemon, 200, 200, GxEPD_WHITE);
+    display.drawBitmap(0, 0, daemon_img, 200, 200, GxEPD_WHITE);
     drawWDay();
     drawDate();
     drawTime();
