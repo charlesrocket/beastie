@@ -57,16 +57,17 @@ void WatchyFBSD::drawTime(){
 
 void WatchyFBSD::drawSteps(){
     display.setFont(&conso11pt7b);
-    int16_t  x1, y1;
-    uint16_t w, h;
-    uint32_t stepCount = sensor.getCounter();
-    String stepStr = String(stepCount);
-    for(int i=1; i<5; i++){
-        stepStr = stepCount < pow(10, i) ? "0" + stepStr : stepStr;
-    }
     if(currentTime.Hour == 23 && currentTime.Minute == 59){
         sensor.resetStepCounter();
     }
+    int16_t  x1, y1;
+    uint16_t w, h;
+    uint32_t stepCount = sensor.getCounter();
+    char stepStr[32];
+    itoa(stepCount, stepStr, 10);
+    int stepStrL = strlen(stepStr);
+    memset(stepStr, '0', 5);
+    itoa(stepCount, stepStr + max(5-stepStrL, 0), 10);
     display.getTextBounds(String(stepStr), 0, 0, &x1, &y1, &w, &h);
     display.setCursor(150 - w/2, 141);
     display.println(String(stepStr));
