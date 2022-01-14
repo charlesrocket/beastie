@@ -1,5 +1,5 @@
 # watchy_fbsd
-![watchy](doc/img.png)
+![watchy](doc/screenshot.gif)
 
 Daemon face for [Watchy](https://github.com/sqfmi/Watchy)
 
