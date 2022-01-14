@@ -88,20 +88,12 @@ void WatchyFBSD::drawTemperature() {
 }
 
 void WatchyFBSD::drawBattery() {
-    display.setFont(&conso10pt7b);
-    display.setCursor(188, 17);
-    display.print(">");
-    display.setFont(&conso11pt7b);
-    display.setCursor(156, 15);
-    float BATTV = getBatteryVoltage();
-    if (BATTV > 4.10){
-        display.print("***");
-    }
-    else if (BATTV > 3.85 && BATTV <= 4.10) {
-        display.print(" **");
-    }
-    else if (BATTV > 3.60 && BATTV <= 3.85) {
-        display.print("  *");
+    float BATTV = getBatteryVoltage() - 3.60;
+    int batt_w = constrain(((33.33 * BATTV) + 0.9), 0, 20);
+    display.fillRoundRect(166, 5, 28, 10, 5, GxEPD_WHITE);
+    display.fillRoundRect(168, 7, 24, 6, 4, GxEPD_BLACK);
+    if (BATTV > 0) {
+        display.fillRoundRect(180 - batt_w/2, 9, batt_w, 2, 3, GxEPD_WHITE);
     }
 }
 
