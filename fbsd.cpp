@@ -1,6 +1,6 @@
 #include "fbsd.h"
 
-void WatchyFBSD::drawWatchFace(){
+void WatchyFBSD::drawWatchFace() {
     display.fillScreen(GxEPD_BLACK);
     display.setTextColor(GxEPD_WHITE);
     display.drawBitmap(0, 0, daemon_img, 200, 200, GxEPD_WHITE);
@@ -11,13 +11,13 @@ void WatchyFBSD::drawWatchFace(){
   //drawTemperature();
     drawBattery();
     drawX();
-    for(uint8_t i=0; i<3; i++){
+    for (uint8_t i=0; i<3; i++) {
         // Reduce ghosting
         display.display(true);
     }
 }
 
-void WatchyFBSD::drawWDay(){
+void WatchyFBSD::drawWDay() {
     display.setFont(&conso10pt7b);
     int16_t  x1, y1;
     uint16_t w, h;
@@ -27,7 +27,7 @@ void WatchyFBSD::drawWDay(){
     display.println(String(dayOfWeek));
 }
 
-void WatchyFBSD::drawDate(){
+void WatchyFBSD::drawDate() {
     display.setFont(&conso12pt7b);
     int16_t  x1, y1;
     uint16_t w, h;
@@ -41,23 +41,23 @@ void WatchyFBSD::drawDate(){
     display.println(String(dateStr));
 }
 
-void WatchyFBSD::drawTime(){
+void WatchyFBSD::drawTime() {
     display.setFont(&conso17pt7b);
     display.setCursor(110, 119);
-    if(currentTime.Hour < 10){
+    if (currentTime.Hour < 10) {
         display.print("0");
     }
     display.print(currentTime.Hour);
     display.print(":");
-    if(currentTime.Minute < 10){
+    if (currentTime.Minute < 10) {
         display.print("0");
     }
     display.print(currentTime.Minute);
 }
 
-void WatchyFBSD::drawSteps(){
+void WatchyFBSD::drawSteps() {
     display.setFont(&conso11pt7b);
-    if(currentTime.Hour == 23 && currentTime.Minute == 59){
+    if (currentTime.Hour == 23 && currentTime.Minute == 59) {
         sensor.resetStepCounter();
     }
     int16_t  x1, y1;
@@ -73,11 +73,11 @@ void WatchyFBSD::drawSteps(){
     display.println(String(stepStr));
 }
 
-void WatchyFBSD::drawTemperature(){
+void WatchyFBSD::drawTemperature() {
     display.setFont(&conso10pt7b);
     display.setCursor(4, 18);
     uint8_t temperatureRTC = RTC.temperature() / 4;
-    if(temperatureRTC < 10){
+    if (temperatureRTC < 10) {
     display.print("0");
     }
     display.print(temperatureRTC);
@@ -87,25 +87,25 @@ void WatchyFBSD::drawTemperature(){
     display.print("c");
 }
 
-void WatchyFBSD::drawBattery(){
+void WatchyFBSD::drawBattery() {
     display.setFont(&conso10pt7b);
     display.setCursor(188, 17);
     display.print(">");
     display.setFont(&conso11pt7b);
     display.setCursor(156, 15);
     float BATTV = getBatteryVoltage();
-    if(BATTV > 4.10){
+    if (BATTV > 4.10){
         display.print("***");
     }
-    else if(BATTV > 3.85 && BATTV <= 4.10){
+    else if (BATTV > 3.85 && BATTV <= 4.10) {
         display.print(" **");
     }
-    else if(BATTV > 3.60 && BATTV <= 3.85){
+    else if (BATTV > 3.60 && BATTV <= 3.85) {
         display.print("  *");
     }
 }
 
-void WatchyFBSD::drawX(){
+void WatchyFBSD::drawX() {
     display.setFont(&conso11pt7b);
     display.setCursor(148, 157);
     display.print("x");

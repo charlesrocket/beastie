@@ -8,7 +8,7 @@
 #include "fonts/conso10pt7b.h"
 #include "daemon.h"
 
-class WatchyFBSD : public Watchy{
+class WatchyFBSD : public Watchy {
     using Watchy::Watchy;
     public:
       void drawWatchFace();
