@@ -73,7 +73,7 @@ void WatchyFBSD::drawSteps() {
     memset(stepStr, '0', 5);
     itoa(stepCount, stepStr + max(5-stepStrL, 0), 10);
     display.getTextBounds(String(stepStr), 0, 0, &x1, &y1, &w, &h);
-    display.setCursor(151 - w/2, 143);
+    display.setCursor(152 - w/2, 143);
     display.println(String(stepStr));
 }
 
@@ -94,7 +94,7 @@ void WatchyFBSD::drawTemperature() {
 
 void WatchyFBSD::drawBattery() {
     float BATTV = getBatteryVoltage() - 3.30;
-    int batt_w = constrain(((33.33 * BATTV) + 0.9), 0, 22);
+    int batt_w = constrain(((33.33 * BATTV) + 0.9), 0, 20);
     display.fillRoundRect(138, 149, 30, 10, 5, GxEPD_WHITE);
     display.fillRoundRect(140, 151, 26, 6, 4, GxEPD_BLACK);
     if (BATTV > 0) {
