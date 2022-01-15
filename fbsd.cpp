@@ -23,7 +23,7 @@ void WatchyFBSD::drawWDay() {
     uint16_t w, h;
     String dayOfWeek = dayShortStr(currentTime.Wday);
     display.getTextBounds(String(dayOfWeek), 0, 0, &x1, &y1, &w, &h);
-    display.setCursor(150 - w/2, 69);
+    display.setCursor(151 - w/2, 67);
     display.println(String(dayOfWeek));
 }
 
@@ -38,15 +38,15 @@ void WatchyFBSD::drawDate() {
     dayStr = currentTime.Day < 10 ? "0" + dayStr : dayStr;
     String dateStr = dayStr + "/" + monthStr;
     display.getTextBounds(String(dateStr), 0, 0, &x1, &y1, &w, &h);
-    display.setCursor(150 - w/2, 91);
+    display.setCursor(151 - w/2, 88);
     display.println(String(dateStr));
 }
 
 void WatchyFBSD::drawTime() {
     display.setFont(&conso17pt7b);
     display.setTextColor(GxEPD_BLACK);
-    display.setCursor(110, 119);
-    display.fillRoundRect(110, 95, 85, 28, 4, GxEPD_WHITE);
+    display.setCursor(111, 119);
+    display.fillRoundRect(111, 95, 85, 29, 4, GxEPD_WHITE);
     if (currentTime.Hour < 10) {
         display.print("0");
     }
@@ -73,7 +73,7 @@ void WatchyFBSD::drawSteps() {
     memset(stepStr, '0', 5);
     itoa(stepCount, stepStr + max(5-stepStrL, 0), 10);
     display.getTextBounds(String(stepStr), 0, 0, &x1, &y1, &w, &h);
-    display.setCursor(150 - w/2, 141);
+    display.setCursor(151 - w/2, 143);
     display.println(String(stepStr));
 }
 
@@ -93,18 +93,18 @@ void WatchyFBSD::drawTemperature() {
 }
 
 void WatchyFBSD::drawBattery() {
-    float BATTV = getBatteryVoltage() - 3.60;
-    int batt_w = constrain(((33.33 * BATTV) + 0.9), 0, 20);
-    display.fillRoundRect(166, 5, 28, 10, 5, GxEPD_WHITE);
-    display.fillRoundRect(168, 7, 24, 6, 4, GxEPD_BLACK);
+    float BATTV = getBatteryVoltage() - 3.30;
+    int batt_w = constrain(((33.33 * BATTV) + 0.9), 0, 22);
+    display.fillRoundRect(138, 149, 30, 10, 5, GxEPD_WHITE);
+    display.fillRoundRect(140, 151, 26, 6, 4, GxEPD_BLACK);
     if (BATTV > 0) {
-        display.fillRoundRect(180 - batt_w/2, 9, batt_w, 2, 3, GxEPD_WHITE);
+        display.fillRoundRect(153 - batt_w/2, 153, batt_w, 2, 3, GxEPD_WHITE);
     }
 }
 
 void WatchyFBSD::drawX() {
     display.setFont(&conso11pt7b);
-    display.setCursor(148, 157);
     display.setTextColor(GxEPD_WHITE);
+    display.setCursor(149, 50);
     display.print("x");
 }
