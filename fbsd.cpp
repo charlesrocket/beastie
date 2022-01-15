@@ -2,7 +2,6 @@
 
 void WatchyFBSD::drawWatchFace() {
     display.fillScreen(GxEPD_BLACK);
-    display.setTextColor(GxEPD_WHITE);
     display.drawBitmap(0, 0, daemon_img, 200, 200, GxEPD_WHITE);
     drawWDay();
     drawDate();
@@ -19,6 +18,7 @@ void WatchyFBSD::drawWatchFace() {
 
 void WatchyFBSD::drawWDay() {
     display.setFont(&conso10pt7b);
+    display.setTextColor(GxEPD_WHITE);
     int16_t  x1, y1;
     uint16_t w, h;
     String dayOfWeek = dayShortStr(currentTime.Wday);
@@ -29,6 +29,7 @@ void WatchyFBSD::drawWDay() {
 
 void WatchyFBSD::drawDate() {
     display.setFont(&conso12pt7b);
+    display.setTextColor(GxEPD_WHITE);
     int16_t  x1, y1;
     uint16_t w, h;
     String monthStr = String(currentTime.Month);
@@ -43,7 +44,9 @@ void WatchyFBSD::drawDate() {
 
 void WatchyFBSD::drawTime() {
     display.setFont(&conso17pt7b);
+    display.setTextColor(GxEPD_BLACK);
     display.setCursor(110, 119);
+    display.fillRoundRect(110, 95, 85, 28, 4, GxEPD_WHITE);
     if (currentTime.Hour < 10) {
         display.print("0");
     }
@@ -57,6 +60,7 @@ void WatchyFBSD::drawTime() {
 
 void WatchyFBSD::drawSteps() {
     display.setFont(&conso11pt7b);
+    display.setTextColor(GxEPD_WHITE);
     if (currentTime.Hour == 23 && currentTime.Minute == 59) {
         sensor.resetStepCounter();
     }
@@ -75,6 +79,7 @@ void WatchyFBSD::drawSteps() {
 
 void WatchyFBSD::drawTemperature() {
     display.setFont(&conso10pt7b);
+    display.setTextColor(GxEPD_WHITE);
     display.setCursor(4, 18);
     uint8_t temperatureRTC = RTC.temperature() / 4;
     if (temperatureRTC < 10) {
@@ -100,5 +105,6 @@ void WatchyFBSD::drawBattery() {
 void WatchyFBSD::drawX() {
     display.setFont(&conso11pt7b);
     display.setCursor(148, 157);
+    display.setTextColor(GxEPD_WHITE);
     display.print("x");
 }
