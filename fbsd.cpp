@@ -83,7 +83,7 @@ void WatchyFBSD::drawTemperature() {
     display.setCursor(4, 18);
     uint8_t temperatureRTC = RTC.temperature() / 4;
     if (temperatureRTC < 10) {
-    display.print("0");
+        display.print("0");
     }
     display.print(temperatureRTC);
     display.setCursor(22, 11);
