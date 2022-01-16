@@ -93,7 +93,7 @@ void WatchyFBSD::drawTemperature() {
 }
 
 void WatchyFBSD::drawBattery() {
-    float BATTV = getBatteryVoltage() - 3.30;
+    float BATTV = getBatteryVoltage() - 3.50;
     int batt_w = constrain(((33.33 * BATTV) + 0.9), 0, 20);
     display.fillRoundRect(138, 150, 30, 10, 5, GxEPD_WHITE);
     display.fillRoundRect(140, 152, 26, 6, 4, GxEPD_BLACK);
