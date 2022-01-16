@@ -98,6 +98,9 @@ void WatchyFBSD::drawBattery() {
     display.fillRoundRect(138, 150, 30, 10, 5, GxEPD_WHITE);
     display.fillRoundRect(140, 152, 26, 6, 4, GxEPD_BLACK);
     if (BATTV > 0) {
+        if (batt_w % 2 != 0) {
+            display.fillRoundRect(153 - (batt_w/2)-1, 154, batt_w, 2, 3, GxEPD_WHITE);
+        }
         display.fillRoundRect(153 - batt_w/2, 154, batt_w, 2, 3, GxEPD_WHITE);
     }
 }
