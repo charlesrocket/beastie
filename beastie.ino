@@ -1,7 +1,7 @@
 #include "beastie.h"
 #include "settings.h"
 
-WatchyFBSD watchy(settings);
+Beastie watchy(settings);
 
 void setup(){
   watchy.init();

@@ -1,6 +1,6 @@
 #include "beastie.h"
 
-void WatchyFBSD::drawWatchFace() {
+void Beastie::drawWatchFace() {
     display.fillScreen(GxEPD_BLACK);
     display.drawBitmap(0, 0, daemon_img, 200, 200, GxEPD_WHITE);
     drawWDay();
@@ -16,7 +16,7 @@ void WatchyFBSD::drawWatchFace() {
     }
 }
 
-void WatchyFBSD::drawWDay() {
+void Beastie::drawWDay() {
     display.setFont(&conso10pt7b);
     display.setTextColor(GxEPD_WHITE);
     int16_t  x1, y1;
@@ -27,7 +27,7 @@ void WatchyFBSD::drawWDay() {
     display.println(String(dayOfWeek));
 }
 
-void WatchyFBSD::drawDate() {
+void Beastie::drawDate() {
     display.setFont(&conso12pt7b);
     display.setTextColor(GxEPD_WHITE);
     int16_t  x1, y1;
@@ -42,7 +42,7 @@ void WatchyFBSD::drawDate() {
     display.println(String(dateStr));
 }
 
-void WatchyFBSD::drawTime() {
+void Beastie::drawTime() {
     display.setFont(&conso17pt7b);
     display.setTextColor(GxEPD_BLACK);
     display.setCursor(111, 119);
@@ -58,7 +58,7 @@ void WatchyFBSD::drawTime() {
     display.print(currentTime.Minute);
 }
 
-void WatchyFBSD::drawSteps() {
+void Beastie::drawSteps() {
     display.setFont(&conso11pt7b);
     display.setTextColor(GxEPD_WHITE);
     if (currentTime.Hour == 23 && currentTime.Minute == 59) {
@@ -77,7 +77,7 @@ void WatchyFBSD::drawSteps() {
     display.println(String(stepStr));
 }
 
-void WatchyFBSD::drawTemperature() {
+void Beastie::drawTemperature() {
     display.setFont(&conso10pt7b);
     display.setTextColor(GxEPD_WHITE);
     display.setCursor(4, 18);
@@ -92,7 +92,7 @@ void WatchyFBSD::drawTemperature() {
     display.print("c");
 }
 
-void WatchyFBSD::drawBattery() {
+void Beastie::drawBattery() {
     float BATTV = getBatteryVoltage() - 3.60;
     int batt_w = constrain(((33.33 * BATTV) + 0.9), 0, 20);
     display.fillRoundRect(138, 150, 30, 10, 5, GxEPD_WHITE);
@@ -105,7 +105,7 @@ void WatchyFBSD::drawBattery() {
     }
 }
 
-void WatchyFBSD::drawX() {
+void Beastie::drawX() {
     display.setFont(&conso11pt7b);
     display.setTextColor(GxEPD_WHITE);
     display.setCursor(149, 50);
