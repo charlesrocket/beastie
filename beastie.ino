@@ -3,8 +3,8 @@
 
 Beastie watchy(settings);
 
-void setup(){
+void setup() {
     watchy.init();
 }
 
-void loop(){}
+void loop() {}
