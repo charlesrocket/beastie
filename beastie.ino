@@ -1,4 +1,4 @@
-#include "fbsd.h"
+#include "beastie.h"
 #include "settings.h"
 
 WatchyFBSD watchy(settings);

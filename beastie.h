@@ -1,5 +1,5 @@
-#ifndef FBSD_H
-#define FBSD_H
+#ifndef BEASTIE_H
+#define BEASTIE_H
 
 #include <Watchy.h>
 #include "fonts/conso17pt7b.h"
