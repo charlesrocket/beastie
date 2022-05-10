@@ -82,6 +82,9 @@ void Beastie::drawTemperature() {
     display.setTextColor(GxEPD_WHITE);
     display.setCursor(4, 18);
     uint8_t temperatureRTC = RTC.temperature() / 4;
+    if (settings.weatherUnit == "imperial") {
+        temperatureRTC = temperatureRTC * (9/5) + 32;
+    }
     if (temperatureRTC < 10) {
         display.print("0");
     }
@@ -89,7 +92,11 @@ void Beastie::drawTemperature() {
     display.setCursor(22, 11);
     display.print(".");
     display.setCursor(29, 16);
-    display.print("c");
+    if (settings.weatherUnit == "imperial") {
+        display.print("f");
+    } else {
+        display.print("c");
+    }
 }
 
 void Beastie::drawBattery() {
