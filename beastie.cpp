@@ -3,13 +3,13 @@
 void Beastie::drawWatchFace() {
     display.fillScreen(GxEPD_BLACK);
     display.drawBitmap(0, 0, daemon_img, 200, 200, GxEPD_WHITE);
+    drawX();
     drawWDay();
     drawDate();
     drawTime();
     drawSteps();
-  //drawTemperature();
     drawBattery();
-    drawX();
+  //drawTemperature();
 
     for (uint8_t i=0; i<3; i++) {
         // Reduce ghosting
